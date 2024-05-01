@@ -23,9 +23,6 @@ namespace InsurancePolicyManagement.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> CreateInsurancePolicy([FromBody] InsurancePolicy model)
         {
-            var policyExists = await _insurancePolicyService.GetInsurancePolicyById(model.PolicyId);
-            if (policyExists != null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Insurance Policy already exists!" });
             var result = await _insurancePolicyService.CreateInsurancePolicy(model);
             if (result == null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Insurance Policy creation failed! Please check details and try again." });
