@@ -11,8 +11,5 @@ namespace InsurancePolicyManagement.BusinessLayer.Services.Repository
     {
         List<InsurancePolicy> GetAllInsurancePolicies();
         Task<InsurancePolicy> CreateInsurancePolicy(InsurancePolicy insurancePolicy);
-        Task<InsurancePolicy> GetInsurancePolicyById(long id);
-        Task<bool> DeleteInsurancePolicyById(long id);
-        Task<InsurancePolicy> UpdateInsurancePolicy(InsurancePolicyViewModel model);
     }
 }
