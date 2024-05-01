@@ -2,9 +2,12 @@
   <h2>Insurance Policies</h2>
   <ul>
     <li *ngFor="let policy of policies">
-      <span>{{ policy.policyNumber }}</span>
-      <span>{{ policy.policyType }}</span>
-      <span>{{ policy.premiumAmount }}</span>
+      <span>Policy Number: {{ policy.policyNumber }}</span>
+      <span>Policy Type: {{ policy.policyType }}</span>
+      <span>Premium Amount: {{ policy.premiumAmount }}</span>
+      <span>Start Date: {{ policy.startDate }}</span>
+      <span>End Date: {{ policy.endDate }}</span>
+      <span>Is Active: {{ policy.isActive }}</span>
     </li>
   </ul>
 
@@ -18,6 +21,15 @@
 
     <label for="premiumAmount">Premium Amount:</label>
     <input type="number" id="premiumAmount" name="premiumAmount" [(ngModel)]="policyForm.premiumAmount" required>
+    
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" [(ngModel)]="policyForm.startDate" required>
+    
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" [(ngModel)]="policyForm.endDate" required>
+    
+    <label for="isActive">Is Active</label>
+    <input type="checkbox" id="isActive" name="isActive" [(ngModel)]="policyForm.isActive" required>
 
     <button type="submit">{{ 'Add Policy' }}</button>
   </form>
