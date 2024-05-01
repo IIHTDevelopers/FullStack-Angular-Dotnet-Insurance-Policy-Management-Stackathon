@@ -23,24 +23,9 @@ namespace InsurancePolicyManagement.BusinessLayer.Services
             return await _insurancePolicyRepository.CreateInsurancePolicy(insurancePolicy);
         }
 
-        public async Task<bool> DeleteInsurancePolicyById(long id)
-        {
-            return await _insurancePolicyRepository.DeleteInsurancePolicyById(id);
-        }
-
         public List<InsurancePolicy> GetAllInsurancePolicies()
         {
             return _insurancePolicyRepository.GetAllInsurancePolicies();
-        }
-
-        public async Task<InsurancePolicy> GetInsurancePolicyById(long id)
-        {
-            return await _insurancePolicyRepository.GetInsurancePolicyById(id);
-        }
-
-        public async Task<InsurancePolicy> UpdateInsurancePolicy(InsurancePolicyViewModel model)
-        {
-            return await _insurancePolicyRepository.UpdateInsurancePolicy(model);
         }
     }
 }
