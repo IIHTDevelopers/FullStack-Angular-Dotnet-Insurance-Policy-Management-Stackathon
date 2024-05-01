@@ -7,7 +7,7 @@ import { InsurancePolicy } from '../models/insurance-policy-management.model';
   providedIn: 'root'
 })
 export class InsurancePolicyService {
-  private apiUrl = 'your-backend-api-url';
+  private apiUrl = 'http://localhost:5000';
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +25,9 @@ export class InsurancePolicyService {
 
   deletePolicy(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/delete-policy?id=${id}`);
+  }
+  
+  getPolicyById(id: number): Observable<InsurancePolicy> {
+    return this.http.get<InsurancePolicy>(`${this.apiUrl}/get-policy-by-id/${id}`);
   }
 }
