@@ -31,20 +31,6 @@ namespace InsurancePolicyManagement.BusinessLayer.Services.Repository
             }
         }
 
-        public async Task<bool> DeleteInsurancePolicyById(long id)
-        {
-            try
-            {
-                _dbContext.Remove(_dbContext.InsurancePolicies.Single(a => a.PolicyId == id));
-                _dbContext.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-        }
-
         public List<InsurancePolicy> GetAllInsurancePolicies()
         {
             try
@@ -52,40 +38,6 @@ namespace InsurancePolicyManagement.BusinessLayer.Services.Repository
                 var result = _dbContext.InsurancePolicies.
                 OrderByDescending(x => x.PolicyId).Take(10).ToList();
                 return result;
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-        }
-
-        public async Task<InsurancePolicy> GetInsurancePolicyById(long id)
-        {
-            try
-            {
-                return await _dbContext.InsurancePolicies.FindAsync(id);
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-        }
-        public async Task<InsurancePolicy> UpdateInsurancePolicy(InsurancePolicyViewModel model)
-        {
-            var policy = await _dbContext.InsurancePolicies.FindAsync(model.PolicyId);
-            try
-            {
-                policy.StartDate = model.StartDate;
-                policy.PolicyNumber = model.PolicyNumber;
-                policy.PolicyId = model.PolicyId;
-                policy.CustomerId = model.CustomerId;
-                policy.EndDate = model.EndDate;
-                policy.IsActive = model.IsActive;
-                policy.PolicyType = model.PolicyType;
-
-                _dbContext.InsurancePolicies.Update(policy);
-                await _dbContext.SaveChangesAsync();
-                return policy;
             }
             catch (Exception ex)
             {
